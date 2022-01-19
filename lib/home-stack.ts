@@ -1,16 +1,17 @@
-import { Stack, StackProps } from 'aws-cdk-lib';
-import { Construct } from 'constructs';
-// import * as sqs from 'aws-cdk-lib/aws-sqs';
+import { Stack, StackProps } from 'aws-cdk-lib'
+import { Construct } from 'constructs'
+import { CodePipeline, CodePipelineSource, ShellStep } from 'aws-cdk-lib/pipelines'
 
 export class HomeStack extends Stack {
   constructor(scope: Construct, id: string, props?: StackProps) {
-    super(scope, id, props);
+    super(scope, id, props)
 
-    // The code that defines your stack goes here
-
-    // example resource
-    // const queue = new sqs.Queue(this, 'HomeQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    new CodePipeline(this, 'Pipeline', {
+      pipelineName: 'HomepagePipeline',
+      synth: new ShellStep('Synth', {
+        input: CodePipelineSource.gitHub('olesu/home', 'main'),
+        commands: ['npm ci', 'npm run build', 'npx cdk synth'],
+      })
+    })
   }
 }
