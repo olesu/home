@@ -6,6 +6,8 @@ export class HomeStack extends Stack {
     constructor(scope: Construct, id: string, props?: StackProps) {
         super(scope, id, props)
 
-        new Bucket(this, 'IndexBucket')
+        new Bucket(this, 'IndexBucket', {
+            websiteIndexDocument: "index.html",
+        })
     }
 }
