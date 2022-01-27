@@ -1,13 +1,13 @@
 import { Stack, StackProps } from "aws-cdk-lib";
-import { Bucket } from "aws-cdk-lib/aws-s3";
 import { Construct } from "constructs";
+import { WebsiteBucket } from "./s3-website-construct";
 
 export class HomeStack extends Stack {
     constructor(scope: Construct, id: string, props?: StackProps) {
         super(scope, id, props)
 
-        new Bucket(this, 'IndexBucket', {
-            websiteIndexDocument: "index.html",
+        new WebsiteBucket(this, 'IndexBucket', {
+            index: "index.html",
         })
     }
 }

@@ -1,21 +1,18 @@
 import { Stack } from "aws-cdk-lib";
 import { Capture, Template } from "aws-cdk-lib/assertions";
-import { HomeStack } from "../lib/home-stack";
+import { WebsiteBucket } from "../lib/s3-website-construct";
 
-describe('HomeStack', () => {
-    const stack = new HomeStack(new Stack(), 'HomeStack')
+describe('WebsiteBucket', () => {
+    const stack = new Stack()
+
+    new WebsiteBucket(stack, 'TestWebsiteBucket', {
+        index: "index.html"
+    })
+
     const template = Template.fromStack(stack)
 
     test('Bucket Created', () => {
-        const capture = new Capture()
-
         template.resourceCountIs("AWS::S3::Bucket", 1)
-        template.hasResourceProperties("AWS::S3::Bucket", {
-            WebsiteConfiguration: capture,
-        })
-        expect(capture.asObject()).toEqual({
-            IndexDocument: "index.html"
-        })
     })
     test('Bucket Has Index Document', () => {
         const capture = new Capture()
