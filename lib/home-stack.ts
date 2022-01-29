@@ -1,6 +1,6 @@
 import { Stack, StackProps } from "aws-cdk-lib";
 import { Construct } from "constructs";
-import { WebsiteBucket } from "./s3-website-construct";
+import { WebsiteBucket } from "./website-bucket-construct";
 
 export class HomeStack extends Stack {
     constructor(scope: Construct, id: string, props?: StackProps) {

@@ -1,6 +1,6 @@
 import { Stack } from "aws-cdk-lib";
 import { Capture, Template } from "aws-cdk-lib/assertions";
-import { WebsiteBucket } from "../lib/s3-website-construct";
+import { WebsiteBucket } from "../lib/website-bucket-construct";
 
 describe('WebsiteBucket', () => {
     const stack = new Stack()
