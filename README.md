@@ -18,3 +18,4 @@ The `cdk.json` file tells the CDK Toolkit how to execute your app.
 ## Renaming the Pipeline
 
 When renaming a pipeline, run `cdk deploy` to create a new one and (optionally) delete the old pipeline.
+See @aws-cdk/aws-s3-deployment for deploying content to the bucket.
