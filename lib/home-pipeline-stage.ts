@@ -3,9 +3,9 @@ import { Construct } from "constructs";
 import { HomeStack } from "./home-stack";
 
 export class HomePipelineStage extends Stage {
-    constructor(scope: Construct, id: string, props?: StageProps) {
-        super(scope, id, props)
+  constructor(scope: Construct, id: string, props?: StageProps) {
+    super(scope, id, props)
 
-        new HomeStack(this, 'Home')
-    }
+    new HomeStack(this, 'Home')
+  }
 }
