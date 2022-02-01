@@ -11,6 +11,7 @@ export class WebsiteBucket extends Construct {
         super(scope, id)
 
         const bucket = new Bucket(this, 'IndexBucket', {
+            bucketName: 'website-01',
             websiteIndexDocument: props.index,
             removalPolicy: RemovalPolicy.DESTROY,
             autoDeleteObjects: true,
